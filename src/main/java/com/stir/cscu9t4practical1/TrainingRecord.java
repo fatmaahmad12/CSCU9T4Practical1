@@ -31,8 +31,31 @@ public class TrainingRecord {
        return result;
    } // lookupEntry
    
+   public String lookupallEntry (int d, int m, int y) {
+       ListIterator<Entry> iter = tr.listIterator();
+       String result = "";
+       while (iter.hasNext()) {
+          Entry current = iter.next();
+          if (current.getDay()==d && current.getMonth()==m && current.getYear()==y) 
+             result = result+current.getEntry();
+            }
+       return result;
+   } //AllEntries
    
-  
+   
+   public String removeEntry1(String n1, int d, int m, int y) {
+       ListIterator<Entry> iter = tr.listIterator();
+       String result = "";
+       while (iter.hasNext()) {
+          Entry current = iter.next();
+          if (current.getName().equals(n1)&&  current.getDay() ==d && current.getMonth()==m && current.getYear()==y) { 
+        	   tr.remove(current);
+        	  result = "Record is Removed";
+            }
+          }
+       return result;
+   }   //Remove
+   
    public int getNumberOfEntries(){
        return tr.size();
    }
